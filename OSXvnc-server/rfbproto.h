@@ -151,7 +151,7 @@ typedef struct {
  * decode the version string respectively.
  */
 
-#define rfbProtocolVersionFormat "RFB %03d.%03d"
+#define rfbProtocolVersionFormat "RFB %03d.%03d\n"
 // Want to allow this to be specified
 //#define rfbProtocolMajorVersion 3
 //#define rfbProtocolMinorVersion 8
@@ -320,7 +320,7 @@ typedef struct {
    Special Encodings
 
    rfbImmediateUpdate
-    Sending this encoding asks the server to respond immediately
+    Sending this encoding asks the server to respond immediately 
     upon seeing a FBU request and not wait to consolidate events
     and not to wait for an update to occur
    rfbPasteboardError

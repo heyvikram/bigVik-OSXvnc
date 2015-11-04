@@ -8,7 +8,7 @@
 CLogger::CLogger(bool bLogging, const char* szFilePath)
 {
 	m_strFilePath=(szFilePath)?(szFilePath):("");
-	m_bLogging=bLogging;
+	m_bLogging=bLogging;	
 
 #ifdef _CONSOLE_
 	AllocConsole();
@@ -20,7 +20,7 @@ CLogger::CLogger(bool bLogging, const char* szFilePath)
 }
 
 CLogger::~CLogger(void)
-{
+{	
 #ifdef _CONSOLE_
 	FreeConsole();
 #endif
@@ -73,23 +73,23 @@ void CLogger::Write(const char* szText)
 	{
 #ifndef _CONSOLE_
 		FILE* f=fopen(m_strFilePath.c_str(), "a");
-
+			
 		if (f)
 #endif
 		{
 			time_t theTime;
 			time(&theTime);
-
+			
 			char* tmp_time = ctime(&theTime);
 			int len_time = strlen(tmp_time);
 			if (tmp_time[len_time - 1] == '\n')
 				tmp_time[len_time - 1] = '\0';
 
 #ifdef _CONSOLE_
-			fprintf(stdout, "[%s] echoServer : %s\n", tmp_time, szText);
+			fprintf(stdout, "[%s] echoServer : %s \n", tmp_time, szText);
 #else
 			fprintf(f, "[%s] echoServer : %s\n", tmp_time, szText);
-
+			
 			fclose(f);
 #endif
 		}
@@ -106,7 +106,7 @@ void CLogger::WriteFormated(const char* szFormat, ...)
 
 	char szMsg[1024];
 	vsprintf(szMsg, szFormat, valist);
-
+	
 	va_end(valist);
 
 	Write(szMsg);

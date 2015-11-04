@@ -7,7 +7,7 @@
 
 /*
  *  OSXvnc Copyright (C) 2001 Dan McGuirk <mcguirk@incompleteness.net>.
- *  Original Xvnc code Copyright (C) 1999 AT&T Laboratories Cambridge.
+ *  Original Xvnc code Copyright (C) 1999 AT&T Laboratories Cambridge.  
  *  All Rights Reserved.
  *
  *  This is free software; you can redistribute it and/or modify
@@ -100,10 +100,10 @@ rfbSendRectEncodingRRE(cl, x, y, w, h)
         nSubrects = subrectEncode32((CARD32 *)rreBeforeBuf, w, h);
         break;
     default:
-        rfbLog("getBgColour: bpp %d?",cl->format.bitsPerPixel);
+        rfbLog("getBgColour: bpp %d?\n",cl->format.bitsPerPixel);
         exit(1);
     }
-
+        
     if (nSubrects < 0) {
 
         /* RRE encoding was too large, use raw */
@@ -162,15 +162,15 @@ rfbSendRectEncodingRRE(cl, x, y, w, h)
 
 
 /*
- * subrectEncode() encodes the given multicoloured rectangle as a background
- * colour overwritten by single-coloured rectangles.  It returns the number
+ * subrectEncode() encodes the given multicoloured rectangle as a background 
+ * colour overwritten by single-coloured rectangles.  It returns the number 
  * of subrectangles in the encoded buffer, or -1 if subrect encoding won't
  * fit in the buffer.  It puts the encoded rectangles in rreAfterBuf.  The
  * single-colour rectangle partition is not optimal, but does find the biggest
- * horizontal or vertical rectangle top-left anchored to each consecutive
+ * horizontal or vertical rectangle top-left anchored to each consecutive 
  * coordinate position.
  *
- * The coding scheme is simply [<bgcolour><subrect><subrect>...] where each
+ * The coding scheme is simply [<bgcolour><subrect><subrect>...] where each 
  * <subrect> is [<colour><x><y><w><h>].
  */
 
@@ -281,9 +281,9 @@ getBgColour(data,size,bpp)
     int size;
     int bpp;
 {
-
+    
 #define NUMCLRS 256
-
+  
   static int counts[NUMCLRS];
   int i,j,k;
 
@@ -296,7 +296,7 @@ getBgColour(data,size,bpp)
     } else if (bpp == 32) {
       return ((CARD32 *)data)[0];
     } else {
-      rfbLog("getBgColour: bpp %d?",bpp);
+      rfbLog("getBgColour: bpp %d?\n",bpp);
       exit(1);
     }
   }
@@ -308,7 +308,7 @@ getBgColour(data,size,bpp)
   for (j=0; j<size; j++) {
     k = (int)(((CARD8 *)data)[j]);
     if (k >= NUMCLRS) {
-      rfbLog("getBgColour: unusual colour = %d", k);
+      rfbLog("getBgColour: unusual colour = %d\n", k);
       exit(1);
     }
     counts[k] += 1;
@@ -317,6 +317,6 @@ getBgColour(data,size,bpp)
       maxclr = ((CARD8 *)data)[j];
     }
   }
-
+  
   return maxclr;
 }

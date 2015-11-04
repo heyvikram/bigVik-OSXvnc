@@ -4,7 +4,7 @@
 
 /*
  *  OSXvnc Copyright (C) 2001 Dan McGuirk <mcguirk@incompleteness.net>.
- *  Original Xvnc code Copyright (C) 1999 AT&T Laboratories Cambridge.
+ *  Original Xvnc code Copyright (C) 1999 AT&T Laboratories Cambridge.  
  *  All Rights Reserved.
  *
  *  This is free software; you can redistribute it and/or modify
@@ -55,10 +55,10 @@ rfbPrintStats(rfbClientPtr cl)
     int totalRectanglesSent = 0;
     int totalBytesSent = 0;
 
-    rfbLog("Statistics:");
+    rfbLog("Statistics:\n");
 
     if ((cl->rfbKeyEventsRcvd != 0) || (cl->rfbPointerEventsRcvd != 0))
-        rfbLog("  key events received %d, pointer events %d",
+        rfbLog("  key events received %d, pointer events %d\n",
                 cl->rfbKeyEventsRcvd, cl->rfbPointerEventsRcvd);
 
     for (i = 0; i < MAX_ENCODINGS; i++) {
@@ -68,22 +68,22 @@ rfbPrintStats(rfbClientPtr cl)
     totalRectanglesSent += cl->rfbLastRectMarkersSent;
     totalBytesSent += cl->rfbLastRectBytesSent;
 
-    rfbLog("  framebuffer updates %d, rectangles %d, bytes %d",
+    rfbLog("  framebuffer updates %d, rectangles %d, bytes %d\n",
             cl->rfbFramebufferUpdateMessagesSent, totalRectanglesSent,
             totalBytesSent);
 
     if (cl->rfbLastRectMarkersSent != 0)
-        rfbLog("    LastRect markers %d, bytes %d",
+        rfbLog("    LastRect markers %d, bytes %d\n",
                 cl->rfbLastRectMarkersSent, cl->rfbLastRectBytesSent);
 
     for (i = 0; i < MAX_ENCODINGS; i++) {
         if (cl->rfbRectanglesSent[i] != 0)
-            rfbLog("    %s rectangles %d, bytes %d",
+            rfbLog("    %s rectangles %d, bytes %d\n",
                    encNames[i], cl->rfbRectanglesSent[i], cl->rfbBytesSent[i]);
     }
 
     if ((totalBytesSent - cl->rfbBytesSent[rfbEncodingCopyRect]) != 0) {
-        rfbLog("  raw bytes equivalent %d, compression ratio %f",
+        rfbLog("  raw bytes equivalent %d, compression ratio %f\n",
                 cl->rfbRawBytesEquivalent,
                 (double)cl->rfbRawBytesEquivalent
                 / (double)(totalBytesSent -

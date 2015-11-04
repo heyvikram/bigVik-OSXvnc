@@ -3,7 +3,7 @@
 
 #if _MSC_VER > 1000
 #pragma once
-#endif
+#endif 
 
 #include <string>
 #include "CritSection.h"
@@ -26,7 +26,7 @@ public:
 
 	//write the string to logger file
 	void Write(const char* szText);
-	//write formatted string(like printf) to logger file
+	//write formated string(like printf) to logger file
 	void WriteFormated(const char* szFormat, ...);
 
 protected:

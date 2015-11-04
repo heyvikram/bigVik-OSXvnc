@@ -138,7 +138,7 @@
 #endif
 
 /* This helps C compiler generate the correct code for multiple functional
- * units.  It reduces register dependencies at the expense of 2 more
+ * units.  It reduces register dependancies at the expense of 2 more
  * registers */
 #ifndef DES_RISC1
 #undef DES_RISC1
@@ -153,7 +153,7 @@ YOU SHOULD NOT HAVE BOTH DES_RISC1 AND DES_RISC2 DEFINED!!!!!
 #endif
 
 /* Unroll the inner loop, this sometimes helps, sometimes hinders.
- * Very much CPU dependent */
+ * Very mucy CPU dependant */
 #ifndef DES_UNROLL
 #undef DES_UNROLL
 #endif
@@ -167,7 +167,7 @@ YOU SHOULD NOT HAVE BOTH DES_RISC1 AND DES_RISC2 DEFINED!!!!!
    even newer MIPS CPU's, but at the moment one size fits all for
    optimization options.  Older Sparc's work better with only UNROLL, but
    there's no way to tell at compile time what it is you're running on */
-
+ 
 #if defined( sun )		/* Newer Sparc's */
 #  define DES_PTR
 #  define DES_RISC1

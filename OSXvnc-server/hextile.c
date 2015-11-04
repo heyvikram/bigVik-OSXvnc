@@ -6,7 +6,7 @@
 
 /*
  *  OSXvnc Copyright (C) 2001 Dan McGuirk <mcguirk@incompleteness.net>.
- *  Original Xvnc code Copyright (C) 1999 AT&T Laboratories Cambridge.
+ *  Original Xvnc code Copyright (C) 1999 AT&T Laboratories Cambridge.  
  *  All Rights Reserved.
  *
  *  This is free software; you can redistribute it and/or modify
@@ -71,7 +71,7 @@ rfbSendRectEncodingHextile(cl, x, y, w, h)
         return sendHextiles32(cl, x, y, w, h);
     }
 
-    rfbLog("rfbSendRectEncodingHextile: bpp %d?", cl->format.bitsPerPixel);
+    rfbLog("rfbSendRectEncodingHextile: bpp %d?\n", cl->format.bitsPerPixel);
     return FALSE;
 }
 

@@ -105,7 +105,7 @@ rfbSendOneRectEncodingZlib(cl, x, y, w, h)
 	    zlibAfterBuf = (char *)xrealloc(zlibAfterBuf, zlibAfterBufSize);
     }
 
-    /*
+    /* 
      * Convert pixel data to client format.
      */
     (*cl->translateFn)(cl->translateLookupTable, &rfbServerFormat,
@@ -148,7 +148,7 @@ rfbSendOneRectEncodingZlib(cl, x, y, w, h)
     zlibAfterBufLen = cl->compStream.total_out - previousOut;
 
     if ( deflateResult != Z_OK ) {
-        rfbLog("zlib deflation error: %s", cl->compStream.msg);
+        rfbLog("zlib deflation error: %s\n", cl->compStream.msg);
         return FALSE;
     }
 
@@ -257,7 +257,7 @@ rfbSendRectEncodingZlib(cl, x, y, w, h)
             return FALSE;
         }
 
-        /* Technically, flushing the buffer here is not extremely
+        /* Technically, flushing the buffer here is not extrememly
          * efficient.  However, this improves the overall throughput
          * of the system over very slow networks.  By flushing
          * the buffer with every maximum size zlib rectangle, we

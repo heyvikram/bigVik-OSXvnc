@@ -1535,7 +1535,7 @@ DetectSmoothImage24 (cl, fmt, w, h)
         }
     }
 
-    if (pixelCount == 0 || diffStat[0] * 33 / pixelCount >= 95)
+    if (diffStat[0] * 33 / pixelCount >= 95)
         return 0;
 
     avgError = 0;
@@ -1618,9 +1618,6 @@ DetectSmoothImage##bpp (cl, fmt, w, h)                                          
             y += w;                                                          \
         }                                                                    \
     }                                                                        \
-                                                                             \
-    if (pixelCount == 0)                                                     \
-        return 0;                                                            \
                                                                              \
     if ((diffStat[0] + diffStat[1]) * 100 / pixelCount >= 90)                \
         return 0;                                                            \

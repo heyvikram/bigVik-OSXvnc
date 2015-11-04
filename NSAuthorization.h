@@ -16,7 +16,7 @@
     AuthorizationRef myAuthorizationRef;
 }
 
-- (instancetype) init;
+- init;
 - (BOOL) executeCommand:(NSString *) command withArgs: (NSArray *) argumentArray;
 - (BOOL) executeCommand:(NSString *) command withArgs: (NSArray *) argumentArray synchronous: (BOOL) sync;
 
